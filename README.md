@@ -2,34 +2,50 @@
 
 Are you worried that Donald J. Trump hasn't read the constitution? Worry no more! This bot will tweet it over to him in small, bite-sized chunks.
 
-Trouble is, he probably won't notice just one person tweeting at him ever hour. So I encourage you to run this, too!
+Trouble is, he probably won't notice just one person tweeting at him ever hour. So I encourage you to set up your own! The more bots tweeting the Constitution directly at our President, the better our chances of him actually being forced to read it.
 
-The easiest way to run it is through a cronjob on a Linux server. If you don't have a Linux server, you can use a VPS ([shameless referral link](https://m.do.co/c/2a56dcfde348))
+I've recently updated the app so that it runs on [Heroku](heroku.com), so you can get it up and running without needing a server and **for free!**
 
-This setup guide assumes you already have python3 and git installed
+Prerequisites:
 
-Setup:
-Install tweepy, clone the repo
-```
-sudo pip install tweepy
-git clone https://github.com/sparky005/constbot.git
-```
-Change the consumer.py file to use your Twitter API keys. If you don't know how to do that, check out [these instructions](https://www.gabfirethemes.com/create-twitter-api-key/) that I found Googling.
+1. You'll need [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [heroku-toolbelt](https://devcenter.heroku.com/articles/heroku-cli) installed on your system. Those links should have instructions for all platforms.  
+2. Set up a new Twitter account for the bot. Make sure you give it a phone number, or else it won't be allowed to post. Stayed signed in as this account for the next step.  
+3. Create a new Twitter app and save the API keys. You can follow  [these instructions](https://www.gabfirethemes.com/create-twitter-api-key/) for help.  
+4. Sign up for a [Heroku Account](https://signup.heroku.com/). You'll need to 'verify' your account with a credit card before proceeding, but don't worry, we'll be operating on the free tier so you won't be charged.  
+5. Create a new app in Heroku. Call it whatever you want, the name doesn't matter. We will push the code to this app later.  
 
-Set up a bash script to run it like so:
-```
-cd /path/to/constbot/directory
-python3 constbot.py
-```
 
-Create the crontab file to run it at your chosen interval:
-```
-15 * * * * /path/to/bash/script.sh # this will run it every hour on the quarter hour
-```
+Okay, on to the actual setup:
 
-And finally, register your crontab:
-```
-crontab /your/crontab/file.txt
-```
+1. Clone the repo to your local machine. On the command line:  
+
+	```
+	git clone https://github.com/sparky005/constbot.git
+	```
+
+2. Edit the consumer.py file to include your API keys from step 3 above.  
+3. In your command line, cd into the constbot directory and commit the changes you made to the consumer.py file:  
+
+	```
+	cd constbot/
+	git add consumer.py -f
+	git commit -m "Add API keys"
+	```
+
+4. Now log in to heroku and push the local repo up:  
+
+	```
+	heroku login
+ 	<type your username and password>
+	heroku git:remote -a <nameOfHerokuApp>
+	git push heroku master
+	```
+5. Now we just need to schedule the heroku app to run. To do this, we can add Heroku's scheduler:  
+
+	```
+	heroku addons:create scheduler:standard
+	heroku addons:open scheduler
+	```
+6. The second command will open a new browser window with the scheduler options. Type 'worker' next to the $ symbol and choose how often you want the app to run.
 
 That's it!
