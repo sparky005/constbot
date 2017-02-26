@@ -124,7 +124,6 @@ shall have been created, or the Emoluments whereof shall have been increased
 during such time; and no Person holding any Office under the United States,
 shall be a Member of either House during his Continuance in Office.
 
-
 Section 7
 All bills for raising Revenue shall originate in the House of Representatives;
 but the Senate may propose or concur with Amendments as on other Bills.
@@ -151,7 +150,6 @@ shall be presented to the President of the United States; and before the Same
 shall take Effect, shall be approved by him, or being disapproved by him, shall
 be repassed by two thirds of the Senate and House of Representatives, according
 to the Rules and Limitations prescribed in the Case of a Bill.
-
 
 Section 8
 The Congress shall have Power To lay and collect Taxes, Duties, Imposts and
@@ -522,7 +520,6 @@ Pierce Butler
 Georgia - William Few, Abraham Baldwin
 
 Attest: William Jackson, Secretary
-
 
 Amendment 1
 Congress shall make no law respecting an establishment of religion, or
