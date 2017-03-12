@@ -18,9 +18,10 @@ def post_tweet(tweet, api):
 
 def get_last_tweet(api, trump_handle, first_tweet):
     """Get last tweet"""
-    last_tweet = api.user_timeline(count=1)
+    last_two_tweets = api.user_timeline(count=2)
     try:
-        last_tweet = last_tweet[0].text
+        last_tweet = last_two_tweets[0].text
+        last_tweet2 = last_two_tweets[1].text
     except IndexError:
         # this must be a new account. post the beginning and quit
         post_tweet(first_tweet, api)
@@ -28,7 +29,10 @@ def get_last_tweet(api, trump_handle, first_tweet):
 
     # remove handle from last tweet
     last_tweet = last_tweet[len(trump_handle):]
-    return last_tweet
+    last_tweet2 = last_tweet2[len(trump_handle):]
+
+    # we get the tweets in reverse order, have to flip them
+    return last_tweet2 + last_tweet
 
 def get_start_position(last_tweet, text):
     """Get current position in constitution based on last tweet"""
