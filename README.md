@@ -1,4 +1,4 @@
-##A twitter bot to help our President finally read the US Constitution
+## A twitter bot to help our President finally read the US Constitution
 
 Are you worried that Donald J. Trump hasn't read the constitution? Worry no more! This bot will tweet it over to him in small, bite-sized chunks.
 
